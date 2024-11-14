@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: fct_listings_reviews
+    description: "A fact table that provides data around a listings reviews, built at a review/date
+                  grain. This will contain data like review score, date, etc."
+    columns:
+      - name: listing_id
+        description: "Unique ID for this listing. Primary Key."
+      - name: generated_reviews_id
+        description: "Unique ID for the review"
+      - name: review_date
+        description: "The date which the associated review was submitted"
+      - name: review_score
+        description: "A score between 1 and 5 given on that listing in the review"
+      - name: first_review
+        description: "Date of the first time the listing has a review"
+      - name: last_review
+        description: "The last time (aka most current) time the listing has been reviewed"
+      - name: listing_reviews_ordered
+        description: "A row number / running count of a listing's reviews ordered sequentially 
+                      by date"

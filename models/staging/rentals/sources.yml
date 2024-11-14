@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: rentals_listings
+    description: "Source tables containing the data for rentals & listings."
+    database: dbt
+    schema: public
+    tables:
+      - name: amenities_changelog
+        description: "Table contains data around amenities and stamps events in which a listings's 
+        amenities change and, if applicable, the reservation id affected."
+      - name: calendar
+        description: "Stores date related to pricing of a given listing and reservation relative to 
+        the calendar date. Also has the min / max number of consecutive nights required to book."
+      - name: generated_reviews
+        description: "Data relating to reviews given to a unique listing id. Rating between 1-5."
+      - name: listings
+        descriptions: "Source data containing many fields relative to a listing / property including
+        things such as the owner information, property information, reviews, and pricing."

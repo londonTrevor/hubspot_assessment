@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: stg_rentals_calendar
+    description: "The staging model for the rentals' activity-related data, such as availability, cost, etc."
+    columns:
+      - name: listing_id
+        description: "The unique id for the listing"
+        tests:
+          - not_null
+      - name: date
+        description: "The calendar data associated to the record"
+      - name: is_available
+        description: "A boolean flag indicating if the listing has availability on that specific date"
+        tests:
+          - accepted_values:
+              values: ['true', 'false']
+      - name: reservation_id
+        description: " Unique ID for that DATE’s reservation. If NULL, this means there is not reservation on 
+                       that date"
+      - name: price
+        description: "The price in USD associated to that rentals cost for that specific date"
+      - name: minimum_nights
+        description: "The minimum number of consecutive nights that must be booked for the associated property"
+      - name: maximum_nights
+        description: "The maximum number of consecutive nights that must be booked for the associated property"

@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: fct_listings_daily
+    description: "A fact model storing data for a listings daily reservation activity. The data is pulled from 
+                  the calendar staging model and an intermediate model to help with the complex logic around
+                  vacancy spans"
+    columns:
+      - name: listing_id
+        description: "Unique ID for this listing. Primary Key."
+      - name: reservation_id
+        description: "Unique ID for a given reservation, if applicable. If this is null that means there is no
+                      reservation on that given day."
+      - name: day_date
+        description: "The calendar date"
+      - name: is_available
+        description: "Boolean flag indicating whether the listing is vacant or not on that date (aka rentable)"
+      - name: minimum_nights
+        description: "The minimum number of consecutive nights the listing must be booked"
+      - name: maximum_nights
+        description: "The maximum number of consecutive nights the listing must be booked"
+      - name: price
+        description: "the cost to rent the listing / property on the given calendar date"
+      - name: vacancy_day
+        description: "Field from the intermediate model. This is a running count of days the property has been vacant
+                      on any given day. It is built to reset at each new span. See the int model's yml for more info."
+      - name: vacancy_start_date
+        description: "The date which the current vacancy span started"
+      - name: vacancy_end_date
+        description: "The date which the current vancancy span ends"

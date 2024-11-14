@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: dim_listings_amenities
+    description: "Staging model for the rentals/listings source data"
+    columns:
+      - name: listing_amenity_id
+        description: "A surrogate key generated using a listing_id and amenity name. Built to maintain
+                      best practice of having unique pks on each model."
+      - name: listing_id
+        description: "Unique ID for this listing. This will *not* always be unique in this model."
+      - name: amenity_name
+        description: "This is the amenity name stored in the amenities array upstream. Additional logic is done
+                      in order to clean up the text for ease of use and consistency downstream."
+      - name: last_updated_at
+        description: "This is the most recent date logged in the amenities changelog for each listing. This can be 
+                      null b/c not all listings are in the changelog data."

@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: dim_hosts
+    description: "A dimension table storing information about a host"
+    columns:
+      - name: host_id
+        description: "Unique ID for the Host who owns the rental(s)"
+      - name: host_name
+        description: "The first name of the host"
+      - name: host_since
+        description: "The date when the host signed up"
+      - name: host_verifications       
+        description: "An array storing the various methods in which the host can verify reservations"
+      - name: host_location
+        description: "Where the host is based"
+      

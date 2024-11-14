@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: dim_listings_properties
+    description: "A dimensional model storing data around rental/listing properties, specifically. The aim for this
+                  model is to collect and store dimensional values for a given property for ease of use and broader
+                  applicability."
+    columns:
+      - name: listing_id
+        description: "Unique ID for this listing. Primary Key."
+      - name: host_id
+        description: "Unique ID for the Host who owns this rental"
+      - name: listing_name
+        description: "The display name of the listing/rental property"
+      - name: neighborhood       
+        description: "Name of neighborhood where the listing is located"
+      - name: property_type      
+        description: "Description type of the property / rental"
+      - name: room_type      
+        description: "Description of the type of room(s)"
+      - name: accommodates
+        description: "How many people the listing can accommodate at one time"
+      - name: first_review
+        description: "Date of the first time the listing has a review"
+      - name: last_review
+        description: "The last time (aka most current) time the listing has been reviewed"
+      - name: beds
+        description: "How many beds the property has avaialable for use"
+      - name: bedrooms
+        description: "How many bedrooms the property has available for use"
+      - name: bathrooms_count
+        description: "Taken from the upstream bathrooms_text field. It strips out the number value within this
+                      upstream field and places it in its own column here. This is done to provide a much more 
+                      user-friendly experience downstream / in BI."
+      - name: bathrooms_type
+        desription: "The logic to derive this value is the same as the above, but strips out the subsequent text
+                     following the number. This will include things like shared, private, etc. Use with the 
+                     bathrooms count to group more easily."
+      - name: review_score_average
+        description: "This is just renamed here from the upstream column to be more intuitive. It is an avg score 
+                      derived from all of the review scores associated to a listing."
+      - name: number_of_reviews
+        description: "The count of reviews associated to the listing (not to the host!)"

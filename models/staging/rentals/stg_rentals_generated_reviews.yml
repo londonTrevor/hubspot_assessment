@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: stg_rentals_generated_reviews
+    description: "Staging model for the listings reviews data. This stores information around review scores and dates"
+    columns:
+      - name: generated_reviews_id
+        description: "The unique id for a review and the primary key for this table"
+        tests:
+          - not_null:
+              config:
+                severity: warn
+      - name: listing_id
+        description: "The unique id associated to the review. This will *not* be unique in this table"
+      - name: review_score
+        description: "The score given for the review. This will be between 1 and 5"
+        tests:
+          - accepted_values: 
+              values: ['1', '2', '3', '4', '5']
+      - name: review_date
+        description: "The date which the review was submitted"

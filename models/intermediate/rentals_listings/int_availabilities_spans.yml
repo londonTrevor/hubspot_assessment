@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: int_availabilities_spans
+    description: "An intermediate table built in order to segregate some more complex logic needed
+                  to derive vacancy spans. These vacancy spans are chunks of time in which a rental
+                  has no reservations and is available. The logic is built in such a way to reset the
+                  running count at each new span, which is any time in which the day is not consecutive."
+    columns:
+      - name: listing_id
+        description: "Unique ID for this listing. Primary Key."
+      - name: day_date
+        description: "The date associated to the listings availability date"
+      - name: vacancy_day
+        description: "This is the running count number for a given rental's vacancy days. This will restart
+                      its count once a unconsecutive day is introduced into the group."
+      - name: span_start_date
+        description: "The date which the given span started. If the span_start_date is the same as the day_date
+                      then the vacancy_day will be 1."
+      - name: span_end_date
+        description: "The date which the given span ends. The associated number here will indicate the total 
+                      number of days the rental was vacant in this timespan (aka will be equal to the below col)"
+      - name: days_in_span_group
+        description: "The total number of days in which the listing was vacant in the given span"

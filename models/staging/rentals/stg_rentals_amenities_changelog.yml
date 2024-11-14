@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: stg_rentals_amenities_changelog
+    description: "This is the staging model for the amenities changelog source table. It stores
+      data around listings' amenities and if/when they were updated"
+    columns:
+      - name: listing_id
+        description: "The unique ID of the listing associated to the changelog"
+        tests:
+          - not_null
+      - name: change_at
+        description: "The data which the update was made to the listings amenities"
+      - name: amenities
+        description: "An array of the various amenities as of the change_at date"
